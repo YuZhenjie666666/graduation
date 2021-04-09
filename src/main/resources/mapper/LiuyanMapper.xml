@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.LiuyanMapper">
+
+    <!-- 查询课程全部信息   -->
+    <select id="findAllLiuyanByTeacherNumber" resultType="com.zut.entity.Liuyan" parameterType="com.zut.entity.Liuyan">
+        SELECT * FROM managerfeedback
+        where tnumber = #{tnumber}
+    </select>
+
+    <!--根据留言id查询留言内容    -->
+    <select id="findById" resultType="com.zut.entity.Liuyan">
+        select * from managerfeedback
+            where id = #{id}
+    </select>
+</mapper>

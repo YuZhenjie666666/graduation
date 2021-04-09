@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.ClassMapper">
+    <!-- 查询班级全部信息   -->
+    <select id="findAll" resultType="com.zut.entity.MClass" >
+        SELECT * FROM mclass
+    </select>
+
+    <!-- 根据班级名称进行查询   -->
+    <select id="findByClassName" resultType="com.zut.entity.MClass">
+        select * from mclass
+        where classname = #{classname}
+    </select>
+
+    <!-- 查询所有的班级   -->
+    <select id="findAllClassName" resultType="com.zut.entity.MClass">
+        select distinct classname from mclass
+    </select>
+</mapper>

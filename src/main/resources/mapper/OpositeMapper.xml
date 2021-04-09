@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.OpositeLiuyanMapper">
+
+    <!-- 动态sql插入方法二   start -->
+    <!-- 对应的插入字段的名字 -->
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="snumber!=null and snumber!=''">
+                snumber,
+            </if>
+            <if test="tnumber!=null and tnumber!=''">
+                tnumber,
+            </if>
+            <if test="mail!=null and mail!=''">
+                mail,
+            </if>
+            <if test="time!=null and time!=''">
+                time,
+            </if>
+            <if test="content!=null and content!=''">
+                content,
+            </if>
+        </trim>
+    </sql>
+
+    <!-- 对应的插入字段的值 -->
+    <sql id="values">
+        <trim suffixOverrides=",">
+            <if test="snumber!=null and snumber!=''">
+                #{snumber},
+            </if>
+            <if test="tnumber!=null and tnumber!=''">
+                #{tnumber},
+            </if>
+            <if test="mail!=null and mail!=''">
+                #{mail},
+            </if>
+            <if test="time!=null and time!=''">
+                #{time},
+            </if>
+            <if test="content!=null and content!=''">
+                #{content},
+            </if>
+        </trim>
+    </sql>
+    <insert id="toManagerLiuyan" parameterType="com.zut.entity.OpositeLiuyan">
+        insert into tomanagerliuyan(<include refid="key"/>)
+        values(<include refid="values"/>)
+    </insert>
+    <!-- 动态sql插入方法  end-->
+</mapper>

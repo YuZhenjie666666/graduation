@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.CourseMapper">
+    <!-- 查询课程全部信息   -->
+    <select id="findAllCourseInfo" resultType="com.zut.entity.Course" parameterType="com.zut.entity.Course">
+        SELECT * FROM course
+    </select>
+    <!--根据课程名称进行查询    -->
+    <select id="findByCourseName" resultType="com.zut.entity.Course" parameterType="com.zut.entity.Course">
+        select * from course
+            where coursename = #{coursename}
+    </select>
+    <!-- 根据教师名称进行查询  -->
+    <select id="findByTeacher" resultType="com.zut.entity.Course" parameterType="com.zut.entity.Course">
+        select * from course
+            where tname = #{tname}
+    </select>
+    <!-- 查询所有的数据去除重复的内容   -->
+    <select id="findAllCourseNameExceptBoth" resultType="com.zut.entity.Course">
+        select distinct coursename from course
+    </select>
+</mapper>

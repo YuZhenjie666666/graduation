@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.FengcaiMapper">
+
+    <!-- 查询课程全部信息   -->
+    <select id="findALlFengCain" resultType="com.zut.entity.Fengcai" parameterType="com.zut.entity.Fengcai">
+        SELECT * FROM goodteacher
+    </select>
+    <!-- 根据id查询风采   -->
+    <select id="findById" resultType="com.zut.entity.Fengcai" parameterType="INTEGER">
+        select * from goodteacher
+        where id = #{id}
+    </select>
+</mapper>

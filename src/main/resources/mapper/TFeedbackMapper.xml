@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.TFeedbackMapper">
+    <!-- 收集反馈信息   -->
+    <!--此处使用动态sql来进行插入操作    -->
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="id!=null and id!=''">
+                id,
+            </if>
+            <if test="tnumber!=null and tnumber!=''">
+                tnumber,
+            </if>
+            <if test="tid!=null and tid!=''">
+                tid,
+            </if>
+            <if test="weektime!=null and weektime!=''">
+                weektime,
+            </if>
+            <if test="coursename!=null and coursename!=''">
+                coursename,
+            </if>
+            <if test="teachername!=null and teachername!=''">
+                teachername,
+            </if>
+            <if test="teacher!=null and teacher!=''">
+                teacher,
+            </if>
+            <if test="sclass!=null and sclass!=''">
+                sclass,
+            </if>
+            <if test="liuyan!=null and liuyan!=''">
+                liuyan,
+            </if>
+            <if test="other!=null and other!=''">
+                other,
+            </if>
+            <if test="sumscore!=null and sumscore!=''">
+                sumscore,
+            </if>
+        </trim>
+    </sql>
+
+    <!-- 对应的插入字段的值 -->
+    <sql id="values">
+        <trim suffixOverrides=",">
+            <if test="id!=null and id!=''">
+                #{id},
+            </if>
+            <if test="tnumber!=null and tnumber!=''">
+                #{tnumber},
+            </if>
+            <if test="tid!=null and tid!=''">
+                #{tid},
+            </if>
+            <if test="weektime!=null and weektime!=''">
+                #{weektime},
+            </if>
+            <if test="coursename!=null and coursename!=''">
+                #{coursename},
+            </if>
+            <if test="teachername!=null and teachername!=''">
+                #{teachername},
+            </if>
+            <if test="teacher!=null and teacher!=''">
+                #{teacher},
+            </if>
+            <if test="sclass!=null and sclass!=''">
+                #{sclass},
+            </if>
+            <if test="liuyan!=null and liuyan!=''">
+                #{liuyan},
+            </if>
+            <if test="other!=null and other!=''">
+                #{other},
+            </if>
+            <if test="sumscore!=null and sumscore!=''">
+                #{sumscore},
+            </if>
+        </trim>
+    </sql>
+    <insert id="postTFeedback" parameterType="com.zut.entity.TFeedback">
+        insert into tfeedback(<include refid="key"/>)
+        values(<include refid="values"/>)
+    </insert>
+
+    <!--    -->
+    <select id="findAllinfo" resultType="com.zut.entity.TFeedback" parameterType="INTEGER">
+        select *
+        from tfeedback
+        where tid = #{tid}
+    </select>
+</mapper>
