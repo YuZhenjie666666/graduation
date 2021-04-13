@@ -11,4 +11,8 @@ public interface TeacherMapper {
     Teacher findByNumber(int tnumber);
     Teacher findById(int tid);
     void saveTeacherInfo(Teacher teacher);
+    //根据id更改个人信息页面
+    void updateFrofile(Teacher teacher);
+
+
 }

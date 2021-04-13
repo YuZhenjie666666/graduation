@@ -72,4 +72,15 @@ public class TeacherController {
         System.out.println(allTeacher);
         return "success";
     }
+
+    @PostMapping("/saveTeacherInfo")
+    @ResponseBody
+    public String saveTeacherinfo(@RequestBody JSONObject teacher){
+        System.out.println(teacher);
+        Teacher teacher1 = JSON.toJavaObject(teacher,Teacher.class);
+        teacherMapper.updateFrofile(teacher1);
+        List<Teacher> allTeacher = teacherMapper.findAllTeacher();
+        System.out.println(allTeacher);
+        return "success";
+    }
 }

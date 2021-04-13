@@ -109,4 +109,11 @@
         insert into teacher(<include refid="key"/>)
         values(<include refid="values"/>)
     </insert>
+
+    <update id="updateFrofile" parameterType="com.zut.entity.Teacher">
+        update teacher
+        set tname = #{tname},tsex = #{tsex},tdepartment = #{tdepartment},tmajor = #{tmajor},teducation = #{teducation},ttitle = #{ttitle},tpassword = #{tpassword},tbirthday = #{tbirthday}
+        where tnumber = #{tnumber}
+
+    </update>
 </mapper>

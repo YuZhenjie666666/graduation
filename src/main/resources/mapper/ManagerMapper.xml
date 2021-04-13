@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.ManagerMapper">
+    <select id="managerlogin" resultType="com.zut.entity.Manager" parameterType="com.zut.entity.Manager">
+        SELECT * FROM manager
+        where name = #{name} and password = #{password}
+    </select>
+
+    <select id="findById" parameterType="INTEGER" resultType="com.zut.entity.Manager">
+        select * from manager
+        where id = #{id}
+    </select>
+
+</mapper>

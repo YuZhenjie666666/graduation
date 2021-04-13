@@ -6,4 +6,19 @@
         SELECT * FROM student
     </select>
 
+    <select id="login" parameterType="com.zut.entity.Student" resultType="com.zut.entity.Student">
+        select * from student
+        where sname = #{sname}
+    </select>
+
+    <select id="findStudentById" parameterType="INTEGER" resultType="com.zut.entity.Student">
+        select * from student
+            where sid = #{sid}
+    </select>
+
+    <update id="saveInfo" parameterType="com.zut.entity.Student">
+        update student
+            set sname = #{sname},ssex = #{ssex},sdepartment = #{sdepartment},sclass = #{sclass}
+            where sid = #{sid}
+    </update>
 </mapper>

@@ -20,4 +20,10 @@
     <select id="findAllCourseNameExceptBoth" resultType="com.zut.entity.Course">
         select distinct coursename from course
     </select>
+    <!-- 根据班级信息进行查询课程信息   -->
+    <select id="findByCstudent" resultType="com.zut.entity.Course">
+        select *
+        from course
+        where cstudent = #{cstudent}
+    </select>
 </mapper>

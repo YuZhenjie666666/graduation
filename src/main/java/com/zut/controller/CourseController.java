@@ -2,7 +2,9 @@ package com.zut.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.zut.entity.Course;
+import com.zut.entity.Student;
 import com.zut.mapper.CourseMapper;
+import com.zut.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,9 @@ import java.util.List;
 public class CourseController {
     @Autowired
     CourseMapper courseMapper;
+
+    @Autowired
+    StudentMapper studentMapper;
 
     @GetMapping("/getAllCourseInfo")
     public String finAll(){
@@ -50,8 +55,9 @@ public class CourseController {
         return json;
     }
     @GetMapping("/getCourseInfoByTeacherName")
-    public String findCourseInfoByTeacher(String tname){
+    public String findCourseInfoByTeacher(String tname,int sid){
         List<Course> list = courseMapper.findByTeacher(tname);
+
 //        System.out.println(tname);
 //        System.out.println(list);
         String flag = "error";
@@ -61,6 +67,7 @@ public class CourseController {
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("flag",flag);
         hashMap.put("course",list);
+
         String json = JSON.toJSONString(hashMap);
         //  System.out.println(json);
         return json;
@@ -80,6 +87,27 @@ public class CourseController {
         hashMap.put("coursenames",allCourseNameExceptBoth);
         String json = JSON.toJSONString(hashMap);
 //        System.out.println(json);
+        return json;
+    }
+
+    // 这个接口是根据上课班级进行查询所有的上课班级信息
+    @GetMapping("/findAllCourseByClassname")
+    public String findAllCourses(String cstudent,int sid){
+        System.out.println("班级信息"+cstudent);
+        System.out.println("学生的学号"+sid);
+        String flag = "error";
+        List<Course> list = courseMapper.findByCstudent(cstudent);
+        Student student = studentMapper.findStudentById(sid);
+        System.out.println(list);
+        if(list != null  && student != null){
+            flag = "success";
+        }
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("flag",flag);
+        hashMap.put("courses",list);
+        hashMap.put("student",student);
+        String json = JSON.toJSONString(hashMap);
+        System.out.println(json);
         return json;
     }
 

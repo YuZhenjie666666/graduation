@@ -7,4 +7,7 @@ import java.util.List;
 @Repository
 public interface StudentMapper {
     List<Student> findAll();
+    Student login(Student student);
+    Student findStudentById(int sid);
+    void saveInfo(Student student);
 }

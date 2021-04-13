@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.ScoreMapper">
+    <select id="findALlScoreInfo" resultType="com.zut.entity.Score" >
+        SELECT * FROM score
+    </select>
+
+    <!-- 查询最近一个月的   -->
+    <select id="findInOneMonth" resultType="com.zut.entity.Score" >
+        SELECT * FROM score where DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;= date(time)
+    </select>
+
+    <!-- 查询到现在的数据   -->
+    <select id="findToNow" resultType="com.zut.entity.Score">
+        select * from score where time &gt; #{time}
+    </select>
+
+</mapper>
