@@ -15,4 +15,73 @@
         from feedback
             where f_number = #{f_number}
     </select>
+
+    <!--这是学上周评信息    -->
+    <!-- 收集反馈信息   -->
+    <!--此处使用动态sql来进行插入操作    -->
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="f_number!=null and f_number!=''">
+                f_number,
+            </if>
+            <if test="sid!=null and sid!=''">
+                sid,
+            </if>
+            <if test="fclass!=null and fclass!=''">
+                fclass,
+            </if>
+            <if test="tname!=null and tname!=''">
+                tname,
+            </if>
+            <if test="f_week!=null and f_week!=''">
+                f_week,
+            </if>
+            <if test="f_suggestion!=null and f_suggestion!=''">
+                f_suggestion,
+            </if>
+            <if test="f_other!=null and f_other!=''">
+                f_other,
+            </if>
+            <if test="tid!=null and tid!=''">
+                tid,
+            </if>
+
+        </trim>
+    </sql>
+
+    <!-- 对应的插入字段的值 -->
+    <sql id="values">
+        <trim suffixOverrides=",">
+            <if test="f_number!=null and f_number!=''">
+                #{f_number},
+            </if>
+            <if test="sid!=null and sid!=''">
+                #{sid},
+            </if>
+            <if test="fclass!=null and fclass!=''">
+                #{fclass},
+            </if>
+            <if test="tname!=null and tname!=''">
+                #{tname},
+            </if>
+            <if test="f_week!=null and f_week!=''">
+                #{f_week},
+            </if>
+            <if test="f_suggestion!=null and f_suggestion!=''">
+                #{f_suggestion},
+            </if>
+            <if test="f_other!=null and f_other!=''">
+                #{f_other},
+            </if>
+            <if test="tid!=null and tid!=''">
+                #{tid},
+            </if>
+
+        </trim>
+    </sql>
+    <insert id="postFeedback" parameterType="com.zut.entity.Feedback">
+        insert into feedback(<include refid="key"/>)
+        values(<include refid="values"/>)
+    </insert>
+
 </mapper>

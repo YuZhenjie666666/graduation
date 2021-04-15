@@ -20,4 +20,5 @@ public class Teacher {
     String tpassword;
     String temail;
     String tbirthday;
+    String simpleinfo;
 }

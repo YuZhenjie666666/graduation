@@ -61,6 +61,9 @@
             <if test="tbirthday!=null and tbirthday!=''">
                 tbirthday,
             </if>
+            <if test="simpleinfo!=null and simpleinfo!=''">
+                simpleinfo,
+            </if>
         </trim>
     </sql>
 
@@ -103,6 +106,9 @@
             <if test="tbirthday!=null and tbirthday!=''">
                 #{tbirthday},
             </if>
+            <if test="simpleinfo!=null and simpleinfo!=''">
+                #{simpleinfo},
+            </if>
         </trim>
     </sql>
     <insert id="saveTeacherInfo" parameterType="com.zut.entity.Teacher">
@@ -112,7 +118,7 @@
 
     <update id="updateFrofile" parameterType="com.zut.entity.Teacher">
         update teacher
-        set tname = #{tname},tsex = #{tsex},tdepartment = #{tdepartment},tmajor = #{tmajor},teducation = #{teducation},ttitle = #{ttitle},tpassword = #{tpassword},tbirthday = #{tbirthday}
+        set tname = #{tname},tsex = #{tsex},tdepartment = #{tdepartment},tmajor = #{tmajor},teducation = #{teducation},ttitle = #{ttitle},tpassword = #{tpassword},tbirthday = #{tbirthday},simpleinfo = #{simpleinfo}
         where tnumber = #{tnumber}
 
     </update>

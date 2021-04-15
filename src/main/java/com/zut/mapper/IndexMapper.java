@@ -10,5 +10,10 @@ public interface IndexMapper {
     List<Indexes> findAll(int index_type);
 
     List<Indexes> findAllIndex();
+    //添加指标内容
+    void insertIndex(Indexes indexes);
+
+    //    根据id进行删除
+    void deleteIndex(int index_id);
 
 }

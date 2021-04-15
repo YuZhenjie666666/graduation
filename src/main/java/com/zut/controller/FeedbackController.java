@@ -1,13 +1,12 @@
 package com.zut.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zut.entity.Feedback;
 import com.zut.mapper.FeedbackMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +40,16 @@ public class FeedbackController {
         hashMap.put("feedback",feedback);
         String json = JSON.toJSONString(hashMap);
         return json;
+    }
+
+    //学生评价页面给管理员
+    @PostMapping("/stomanager")
+    public String stomanager(@RequestBody JSONObject jsonObject){
+        System.out.println(jsonObject);
+        Feedback feedback = jsonObject.toJavaObject(jsonObject,Feedback.class);
+        System.out.println(feedback);
+        feedbackMapper.postFeedback(feedback);
+        return "success";
     }
 
 }

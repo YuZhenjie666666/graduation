@@ -26,4 +26,9 @@
         from course
         where cstudent = #{cstudent}
     </select>
+
+    <select id="findByClassNameAndCourseName" resultType="com.zut.entity.Course">
+        select * from course
+        where coursename = #{coursename} and cstudent = #{cstudent}
+    </select>
 </mapper>

@@ -14,5 +14,7 @@ public interface CourseMapper {
     List<Course> findAllCourseNameExceptBoth();
     //这里面是根据班级信息进行查询所有的课程信息
     List<Course> findByCstudent(String cstudent);
+    //根据班级 课程名称进行查询所有的课程信息
+    List<Course> findByClassNameAndCourseName(String coursename,String cstudent);
 
 }

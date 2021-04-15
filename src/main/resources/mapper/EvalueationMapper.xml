@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.EvalueationMapper">
+    <!--此处使用动态sql来进行插入操作    -->
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="id!=null and id!=''">
+                id,
+            </if>
+            <if test="sname!=null and sname!=''">
+                sname,
+            </if>
+            <if test="tname!=null and tname!=''">
+                tname,
+            </if>
+            <if test="coursename!=null and coursename!=''">
+                coursename,
+            </if>
+            <if test="time!=null and time!=''">
+                time,
+            </if>
+            <if test="score!=null and score!=''">
+                score,
+            </if>
+            <if test="liuyan!=null and liuyan!=''">
+                liuyan,
+            </if>
+        </trim>
+    </sql>
+
+    <!-- 对应的插入字段的值 -->
+    <sql id="values">
+        <trim suffixOverrides=",">
+            <if test="id!=null and id!=''">
+                #{id},
+            </if>
+            <if test="sname!=null and sname!=''">
+                #{sname},
+            </if>
+            <if test="tname!=null and tname!=''">
+                #{tname},
+            </if>
+            <if test="coursename!=null and coursename!=''">
+                #{coursename},
+            </if>
+            <if test="time!=null and time!=''">
+                #{time},
+            </if>
+            <if test="score!=null and score!=''">
+                #{score},
+            </if>
+            <if test="liuyan!=null and liuyan!=''">
+                #{liuyan},
+            </if>
+
+        </trim>
+    </sql>
+    <insert id="postEvalueation" parameterType="com.zut.entity.Evalueation">
+        insert into evaluation(<include refid="key"/>)
+        values(<include refid="values"/>)
+    </insert>
+</mapper>

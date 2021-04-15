@@ -9,5 +9,5 @@ import java.util.List;
 public interface FeedbackMapper {
     List<Feedback> findAllFeedback(int tid);
     Feedback findByFnumber(int f_number);
-
+    void postFeedback(Feedback feedback);
 }

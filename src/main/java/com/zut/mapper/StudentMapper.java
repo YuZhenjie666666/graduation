@@ -10,4 +10,6 @@ public interface StudentMapper {
     Student login(Student student);
     Student findStudentById(int sid);
     void saveInfo(Student student);
+    List<Student> findALlDepartment();
+
 }

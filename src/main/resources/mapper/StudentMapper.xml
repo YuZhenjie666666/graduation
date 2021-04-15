@@ -21,4 +21,8 @@
             set sname = #{sname},ssex = #{ssex},sdepartment = #{sdepartment},sclass = #{sclass}
             where sid = #{sid}
     </update>
+
+    <select id="findALlDepartment" resultType="com.zut.entity.Student">
+        select distinct sdepartment from student
+    </select>
 </mapper>

@@ -65,4 +65,25 @@ public class StudentController {
         studentMapper.saveInfo(student1);
         return "success";
     }
+
+    @GetMapping("/getAlldepartment")
+    public String findAll(){
+        List<Student> aLlDepartment = studentMapper.findALlDepartment();
+        String flag = "error";
+        if(aLlDepartment != null){
+            flag = "success";
+        }
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("flag",flag);
+        hashMap.put("aLlDepartment",aLlDepartment);
+        String json = JSON.toJSONString(hashMap);
+        return json;
+    }
+
+    //这是测试使用
+    @GetMapping("/getTest")
+    public String findTest(){
+        studentMapper.findALlDepartment();
+        return null;
+    }
 }

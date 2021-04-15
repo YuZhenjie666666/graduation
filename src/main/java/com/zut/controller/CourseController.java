@@ -111,4 +111,24 @@ public class CourseController {
         return json;
     }
 
+    @GetMapping("/findCoursesMyself")
+    public String findMyCourse(String coursename,String cstudent){
+        List<Course> list = courseMapper.findByClassNameAndCourseName(coursename, cstudent);
+        System.out.println(list);
+        String flag = "error";
+//        List<Course> list = courseMapper.findByCstudent(cstudent);
+//        Student student = studentMapper.findStudentById(sid);
+//        System.out.println(list);
+        if(list != null){
+            flag = "success";
+        }
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("flag",flag);
+        hashMap.put("courses",list);
+//        hashMap.put("student",student);
+        String json = JSON.toJSONString(hashMap);
+        System.out.println(json);
+        return json;
+    }
+
 }
