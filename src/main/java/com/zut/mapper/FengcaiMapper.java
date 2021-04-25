@@ -9,4 +9,7 @@ import java.util.List;
 public interface FengcaiMapper {
     List<Fengcai> findALlFengCain();
     Fengcai findById(int id);
+    void updateFengcai(Fengcai fengcai);
+    void deleteById(int id);
+    void addFengcai(Fengcai fengcai);
 }

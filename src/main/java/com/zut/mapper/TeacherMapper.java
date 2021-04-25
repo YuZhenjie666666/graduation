@@ -14,5 +14,11 @@ public interface TeacherMapper {
     //根据id更改个人信息页面
     void updateFrofile(Teacher teacher);
 
+    Teacher findAllInByNumber(int tnumber);
+//    manager管理教师信息
+//    void addTeacher(Teacher teacher);
+//根据教师号删除教师信息
+    void deleteTeacher(int tnumber);
+
 
 }

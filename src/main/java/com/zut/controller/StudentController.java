@@ -86,4 +86,23 @@ public class StudentController {
         studentMapper.findALlDepartment();
         return null;
     }
+    @PostMapping("/addStudent")
+    public String addStudent(@RequestBody JSONObject jsonObject) {
+        Student student = jsonObject.toJavaObject(jsonObject, Student.class);
+        studentMapper.addStudent(student);
+        return "success";
+    }
+//管理员修改学生信息
+    @PostMapping("/managerUpdateStudent")
+    public String update(@RequestBody JSONObject jsonObject){
+        Student student = jsonObject.toJavaObject(jsonObject, Student.class);
+        studentMapper.updateStudent(student);
+        return "success";
+    }
+//    管理员删除学生信息
+    @GetMapping("/deleteStudent")
+    public String delate(int sid){
+        studentMapper.deleteStudent(sid);
+        return "success";
+    }
 }

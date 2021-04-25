@@ -16,5 +16,7 @@ public interface CourseMapper {
     List<Course> findByCstudent(String cstudent);
     //根据班级 课程名称进行查询所有的课程信息
     List<Course> findByClassNameAndCourseName(String coursename,String cstudent);
-
+    void addCourse(Course course);
+    void updateCourse(Course course);
+    void deleteCourse(int id);
 }

@@ -6,7 +6,10 @@
     <select id="findAll" resultType="com.zut.entity.MClass" >
         SELECT * FROM mclass
     </select>
-
+    <select id="findById" parameterType="INTEGER" resultType="com.zut.entity.MClass">
+        select * from mclass
+        where id = #{id}
+    </select>
     <!-- 根据班级名称进行查询   -->
     <select id="findByClassName" resultType="com.zut.entity.MClass">
         select * from mclass
@@ -17,4 +20,24 @@
     <select id="findAllClassName" resultType="com.zut.entity.MClass">
         select distinct classname from mclass
     </select>
+<!--    管理员方面的内容-->
+    <insert id="addClass" parameterType="com.zut.entity.MClass">
+        insert into mclass
+        set classname = #{classname},monitor = #{monitor},teacher = #{teacher},cnumber = #{cnumber},major = #{major},other = #{other}
+    </insert>
+    <delete id="deleteClass" parameterType="INTEGER">
+        delete from mclass
+            where id = #{id}
+    </delete>
+    <update id="updateClass" parameterType="com.zut.entity.MClass">
+        update mclass
+        set classname = #{classname},monitor = #{monitor},teacher = #{teacher},cnumber = #{cnumber},major = #{major},other = #{other}
+            where id = #{id}
+    </update>
+
+
+
+
+
+
 </mapper>

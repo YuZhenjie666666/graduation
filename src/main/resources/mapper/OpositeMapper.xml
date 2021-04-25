@@ -50,4 +50,13 @@
         values(<include refid="values"/>)
     </insert>
     <!-- 动态sql插入方法  end-->
+    <select id="findStudentInfo" resultType="com.zut.entity.OpositeLiuyan">
+        select * from tomanagerliuyan where snumber is not null
+    </select>
+
+    <select id="findTeacherInfo" resultType="com.zut.entity.OpositeLiuyan">
+        select * from tomanagerliuyan where tnumber is not null
+    </select>
+
+
 </mapper>

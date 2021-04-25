@@ -31,4 +31,21 @@
         select * from course
         where coursename = #{coursename} and cstudent = #{cstudent}
     </select>
+
+    <!--    管理员方面的需求-->
+    <delete id="deleteCourse" parameterType="INTEGER">
+        delete from course
+        where id = #{id}
+    </delete>
+
+    <update id="updateCourse" parameterType="com.zut.entity.Course">
+        update course
+        set coursename = #{coursename},tname=#{tname},cstudent=#{cstudent},ctime=#{ctime},chome=#{chome}
+        where id = #{id}
+    </update>
+
+    <insert id="addCourse" parameterType="com.zut.entity.Course">
+        insert into course
+        set coursename = #{coursename},tname=#{tname},cstudent=#{cstudent},ctime=#{ctime},chome=#{chome}
+    </insert>
 </mapper>

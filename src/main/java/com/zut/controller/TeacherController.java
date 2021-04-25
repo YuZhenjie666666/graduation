@@ -77,10 +77,31 @@ public class TeacherController {
     @ResponseBody
     public String saveTeacherinfo(@RequestBody JSONObject teacher){
         System.out.println(teacher);
-        Teacher teacher1 = JSON.toJavaObject(teacher,Teacher.class);
+        Teacher teacher1 = teacher.toJavaObject(teacher,Teacher.class);
+        System.out.println(teacher1);
         teacherMapper.updateFrofile(teacher1);
-        List<Teacher> allTeacher = teacherMapper.findAllTeacher();
-        System.out.println(allTeacher);
+//        List<Teacher> allTeacher = teacherMapper.findAllTeacher();
+//        System.out.println(allTeacher);
         return "success";
+    }
+
+    @GetMapping("/deleteTeacherByTnumber")
+    public String deleteTeacher(int tnumber){
+        teacherMapper.deleteTeacher(tnumber);
+        return "success";
+    }
+
+    @GetMapping("/findALlinfoByTnumber")
+    public String find(int tnumber){
+        String flag = "error";
+        Teacher teacher = teacherMapper.findAllInByNumber(tnumber);
+        if(teacher != null){
+            flag = "success";
+        }
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("flag",flag);
+        hashMap.put("teacher",teacher);
+        String json = JSON.toJSONString(hashMap);
+        return json;
     }
 }

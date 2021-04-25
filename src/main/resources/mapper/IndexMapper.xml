@@ -26,4 +26,11 @@
         where index_id = #{index_id}
     </delete>
 
+    <!--下午进行指标库的管理    -->
+    <update id="updateIndexes" parameterType="com.zut.entity.Indexes" >
+        update indexes
+        set index_number= #{index_number},index_type=#{index_type},index_name=#{index_name},index_capacity=#{index_capacity}
+        where index_id = #{index_id}
+    </update>
+
 </mapper>

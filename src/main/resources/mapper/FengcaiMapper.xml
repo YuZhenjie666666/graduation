@@ -12,4 +12,22 @@
         select * from goodteacher
         where id = #{id}
     </select>
+
+    <!-- 修改风采内容   -->
+    <update id="updateFengcai" parameterType="com.zut.entity.Fengcai">
+        update goodteacher
+        set content = #{content},tnumber = #{tnumber}, img = #{img},time = #{time}
+        where id = #{id}
+    </update>
+
+    <!--  根据id进行删除-->
+    <delete id="deleteById" parameterType="INTEGER">
+        delete from goodteacher
+        where id = #{id}
+    </delete>
+    <!--添加风采页面信息    -->
+    <insert id="addFengcai" parameterType="com.zut.entity.Fengcai">
+        insert into goodteacher
+        set content = #{content},tnumber = #{tnumber}, img = #{img},time = #{time}
+    </insert>
 </mapper>

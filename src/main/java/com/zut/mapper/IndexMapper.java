@@ -16,4 +16,8 @@ public interface IndexMapper {
     //    根据id进行删除
     void deleteIndex(int index_id);
 
+    void updateIndexes(Indexes indexes);
+
+
+
 }

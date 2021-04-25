@@ -10,4 +10,20 @@
         select * from teachinfo
         where id = #{id}
     </select>
+    <!--管理员端页面 删除   -->
+    <delete id="deleteById" parameterType="INTEGER">
+        delete from teachinfo
+        where id = #{id}
+    </delete>
+    <!--   管理员端的修改页面 -->
+    <update id="updatePingdu" parameterType="com.zut.entity.TeachInfo">
+        update teachinfo
+        set title = #{title},content=#{content},time=#{time},liulan=#{liulan},img=#{img}
+        where id = #{id}
+    </update>
+
+    <insert id="addYuebao" parameterType="com.zut.entity.TeachInfo">
+        insert into teachinfo
+        set title = #{title},content=#{content},time=#{time},liulan=#{liulan},img=#{img}
+    </insert>
 </mapper>

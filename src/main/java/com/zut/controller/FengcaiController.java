@@ -1,13 +1,12 @@
 package com.zut.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zut.entity.Fengcai;
 import com.zut.mapper.FengcaiMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +43,28 @@ public class FengcaiController {
         hashMap.put("fengcai",fengCain);
         String json = JSON.toJSONString(hashMap);
         return json;
+    }
+
+    @GetMapping("/deleteById")
+    public String deleteById(int id){
+        fengcaiMapper.deleteById(id);
+        return "success";
+    }
+
+    @PostMapping("/updateFengcai")
+    public String updateFengcai(@RequestBody JSONObject jsonObject){
+        System.out.println(jsonObject);
+        Fengcai fengcai = jsonObject.toJavaObject(jsonObject, Fengcai.class);
+        System.out.println(fengcai);
+        fengcaiMapper.updateFengcai(fengcai);
+        return "success";
+    }
+
+    @PostMapping("/addFengcaiinfo")
+    public String addFengcai(@RequestBody JSONObject jsonObject){
+        Fengcai fengcai = jsonObject.toJavaObject(jsonObject, Fengcai.class);
+        fengcaiMapper.addFengcai(fengcai);
+        return "success";
     }
 
 }

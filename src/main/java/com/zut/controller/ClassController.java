@@ -1,14 +1,12 @@
 package com.zut.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zut.entity.MClass;
 import com.zut.mapper.ClassMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +33,19 @@ public class ClassController {
         return json;
     }
 
+    @GetMapping("/findByidClass")
+    public String findById(int id){
+        MClass byId = classMapper.findById(id);
+        String flag = "error";
+        if(byId != null){
+            flag = "success";
+        }
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("flag",flag);
+        hashMap.put("class",byId);
+        String json = JSON.toJSONString(hashMap);
+        return json;
+    }
     @GetMapping("/findByname")
     public String findByClassName(String classname){
         System.out.println(classname);
@@ -65,5 +76,26 @@ public class ClassController {
         String json = JSON.toJSONString(hashMap);
 //        System.out.println(json);
         return json;
+    }
+
+//    管理员内容
+    @GetMapping("/deleteClass")
+    public String delete(int id){
+        classMapper.deleteClass(id);
+        return  "success";
+    }
+
+    @PostMapping("/updateClass")
+    public String update(@RequestBody JSONObject jsonObject){
+        MClass mClass = jsonObject.toJavaObject(jsonObject, MClass.class);
+        classMapper.updateClass(mClass);
+        return "success";
+    }
+
+    @PostMapping("/addClass")
+    public String addClass(@RequestBody JSONObject jsonObject){
+        MClass mClass = jsonObject.toJavaObject(jsonObject, MClass.class);
+        classMapper.addClass(mClass);
+        return "success";
     }
 }

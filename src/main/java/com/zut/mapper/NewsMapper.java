@@ -8,4 +8,6 @@ import java.util.List;
 public interface NewsMapper {
     List<News> findAllNews();
     News findById(int id);
+    void deleteById(int id);
+    void addNews(News news);
 }

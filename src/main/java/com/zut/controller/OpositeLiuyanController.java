@@ -6,12 +6,11 @@ import com.zut.entity.OpositeLiuyan;
 import com.zut.mapper.OpositeLiuyanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @ResponseBody
@@ -38,4 +37,33 @@ public class OpositeLiuyanController {
 //        System.out.println(opositeLiuyan);
 //        System.out.println("插入成功");
 //    }
+    @GetMapping("/findAllStudentliuyan")
+    public String allStudentLiuyan(){
+        List<OpositeLiuyan> studentInfo = opositeLiuyanMapper.findStudentInfo();
+        String flag = "error";
+        if(studentInfo != null){
+            flag = "success";
+        }
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("flag",flag);
+        hashMap.put("stuliuyan",studentInfo);
+        String json = JSON.toJSONString(hashMap);
+        return json;
+    }
+
+    @GetMapping("/findAllTeacherliuyan")
+    public String allSentLiuyan(){
+        List<OpositeLiuyan> studentInfo = opositeLiuyanMapper.findTeacherInfo();
+        String flag = "error";
+        if(studentInfo != null){
+            flag = "success";
+        }
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("flag",flag);
+        hashMap.put("tealiuyan",studentInfo);
+        String json = JSON.toJSONString(hashMap);
+        return json;
+    }
+
+
 }

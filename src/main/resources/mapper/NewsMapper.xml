@@ -9,5 +9,14 @@
         select * from news
             where id = #{id}
     </select>
+    <delete id="deleteById" parameterType="INTEGER">
+        delete from news
+            where id = #{id}
+    </delete>
+
+    <insert id="addNews" parameterType="com.zut.entity.News">
+        insert into news
+        set title = #{title},content = #{content},time = #{time},img = #{img}
+    </insert>
 
 </mapper>

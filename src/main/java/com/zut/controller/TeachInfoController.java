@@ -1,13 +1,12 @@
 package com.zut.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zut.entity.TeachInfo;
 import com.zut.mapper.TeacInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,5 +46,25 @@ public class TeachInfoController {
         String json = JSON.toJSONString(hashMap);
         System.out.println(json);
         return json;
+    }
+//    删除月报
+    @GetMapping("/deleyuebaoById")
+    public String deleteyuebao(int id){
+        teacInfoMapper.deleteById(id);
+        return "success";
+    }
+//    修改月报
+    @PostMapping("/updateyuebao")
+    public String updateyuebao(@RequestBody JSONObject jsonObject){
+        TeachInfo teachInfo = jsonObject.toJavaObject(jsonObject, TeachInfo.class);
+        teacInfoMapper.updatePingdu(teachInfo);
+        return "success";
+    }
+//    添加月报
+    @PostMapping("/addyuebao")
+    public String addYuebao(@RequestBody JSONObject jsonObject){
+        TeachInfo teachInfo = jsonObject.toJavaObject(jsonObject, TeachInfo.class);
+        teacInfoMapper.addYuebao(teachInfo);
+        return "success";
     }
 }

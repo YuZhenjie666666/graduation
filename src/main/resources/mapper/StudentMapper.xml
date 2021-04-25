@@ -25,4 +25,20 @@
     <select id="findALlDepartment" resultType="com.zut.entity.Student">
         select distinct sdepartment from student
     </select>
+
+    <insert id="addStudent" parameterType="com.zut.entity.Student">
+        insert into student
+        set snumber = #{snumber},sname=#{sname},ssex = #{ssex},sdepartment = #{sdepartment},sclass= #{sclass},spassword = #{spassword}
+    </insert>
+
+    <update id="updateStudent" parameterType="com.zut.entity.Student">
+        update student
+        set snumber = #{snumber},sname=#{sname},ssex = #{ssex},sdepartment = #{sdepartment},sclass= #{sclass},spassword = #{spassword}
+        where sid = #{sid}
+    </update>
+
+    <delete id="deleteStudent" parameterType="INTEGER">
+        delete from student
+        where sid = #{sid}
+    </delete>
 </mapper>

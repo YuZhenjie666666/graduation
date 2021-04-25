@@ -118,8 +118,20 @@
 
     <update id="updateFrofile" parameterType="com.zut.entity.Teacher">
         update teacher
-        set tname = #{tname},tsex = #{tsex},tdepartment = #{tdepartment},tmajor = #{tmajor},teducation = #{teducation},ttitle = #{ttitle},tpassword = #{tpassword},tbirthday = #{tbirthday},simpleinfo = #{simpleinfo}
+        set tname = #{tname},tsex = #{tsex},tdepartment = #{tdepartment},tmajor = #{tmajor},
+            teducation = #{teducation},ttitle = #{ttitle},tpassword = #{tpassword},tbirthday = #{tbirthday},
+            simpleinfo = #{simpleinfo},ttype=#{ttype},temail=#{temail},tid=#{tid}
         where tnumber = #{tnumber}
 
     </update>
+
+    <delete id="deleteTeacher" parameterType="INTEGER">
+        delete from teacher
+        where tnumber = #{tnumber}
+    </delete>
+
+    <select id="findAllInByNumber" parameterType="INTEGER" resultType="com.zut.entity.Teacher">
+        select * from teacher
+        where tnumber = #{tnumber}
+    </select>
 </mapper>
