@@ -12,4 +12,16 @@
         where id = #{id}
     </select>
 
+    <update id="updatePass" parameterType="com.zut.entity.Manager">
+        update manager
+        set password = #{password}
+        where id = #{id}
+    </update>
+
+    <select id="findByName" resultType="com.zut.entity.Manager">
+        select *
+        from manager
+        where name = #{name}
+    </select>
+
 </mapper>

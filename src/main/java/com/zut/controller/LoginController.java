@@ -41,11 +41,11 @@ public class LoginController {
     @ResponseBody
     @PostMapping("/teacherlogin")
     public String teacherlogin(@RequestBody Teacher teacher){
-        System.out.println(teacher);
+//        System.out.println(teacher);
         String flag = "error";
         Teacher teacher1 = loginMapper.getTeacherMessage(teacher.getTname(),teacher.getTpassword());
-        System.out.println("-----------------------");
-        System.out.println(teacher1);
+//        System.out.println("-----------------------");
+//        System.out.println(teacher1);
         HashMap<String,Object> res = new HashMap<>();
         if(teacher1 != null){
             flag = "success";
@@ -53,7 +53,7 @@ public class LoginController {
         res.put("flag",flag);
         res.put("teacher",teacher1);
         String json = JSON.toJSONString(res);
-        System.out.println("最终传回前端页面的数据结果"+json);
+//        System.out.println("最终传回前端页面的数据结果"+json);
         return json;
     }
 

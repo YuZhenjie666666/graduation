@@ -19,6 +19,7 @@ public interface TeacherMapper {
 //    void addTeacher(Teacher teacher);
 //根据教师号删除教师信息
     void deleteTeacher(int tnumber);
-
+//修改教师信息密码
+    void updatePassword(Teacher teacher);
 
 }

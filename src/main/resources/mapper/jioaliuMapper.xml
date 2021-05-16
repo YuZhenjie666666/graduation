@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.JioaliuMapper">
+    <insert id="addJioaliuinfo" parameterType="com.zut.entity.Jioaliu">
+        insert into jiaoliu
+        set monitor = #{monitor},sname = #{sname},content = #{content},time = #{time},flag = #{flag},answer= #{answer}
+    </insert>
+
+    <select id="selectALl" resultType="com.zut.entity.Jioaliu" parameterType="java.lang.String">
+        select * from jiaoliu
+        where sname = #{sname}
+    </select>
+    <select id="findByTname" parameterType="java.lang.String" resultType="com.zut.entity.Jioaliu">
+        select * from jiaoliu
+        where monitor = #{monitor}
+    </select>
+    <update id="updateJiaoliu" parameterType="com.zut.entity.Jioaliu">
+        update jiaoliu
+        set flag = 1,answer= #{answer}
+        where content = #{content}
+    </update>
+</mapper>

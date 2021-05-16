@@ -19,4 +19,10 @@
         set title = #{title},content = #{content},time = #{time},img = #{img}
     </insert>
 
+    <update id="updateNews" parameterType="com.zut.entity.News">
+        update  news
+        set title = #{title},content = #{content}
+        where id = #{id}
+    </update>
+
 </mapper>

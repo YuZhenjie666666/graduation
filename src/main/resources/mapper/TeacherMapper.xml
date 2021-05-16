@@ -134,4 +134,11 @@
         select * from teacher
         where tnumber = #{tnumber}
     </select>
+
+    <!--更改密码-->
+    <update id="updatePassword" parameterType="com.zut.entity.Teacher">
+        update teacher
+        set tpassword = #{tpassword}
+        where tid = #{tid}
+    </update>
 </mapper>

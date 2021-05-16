@@ -104,4 +104,12 @@ public class TeacherController {
         String json = JSON.toJSONString(hashMap);
         return json;
     }
+    @PostMapping("/updatePassword")
+    public String updatePassword(@RequestBody JSONObject jsonObject){
+        System.out.println(jsonObject);
+        Teacher teacher = jsonObject.toJavaObject(jsonObject, Teacher.class);
+        System.out.println(teacher);
+        teacherMapper.updatePassword(teacher);
+        return "success";
+    }
 }

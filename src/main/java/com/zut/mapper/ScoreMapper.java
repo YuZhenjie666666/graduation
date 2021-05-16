@@ -14,4 +14,7 @@ public interface ScoreMapper {
 
     //查询某个时间到现在的内容
     List<Score> findToNow(String time);
+
+//    判断是否在7天内
+
 }

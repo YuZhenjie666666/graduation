@@ -17,7 +17,7 @@ public interface IndexMapper {
     void deleteIndex(int index_id);
 
     void updateIndexes(Indexes indexes);
-
+    List<String> findAllName(int index_type);
 
 
 }

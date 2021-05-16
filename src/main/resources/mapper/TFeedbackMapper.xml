@@ -91,4 +91,47 @@
         from tfeedback
         where tid = #{tid}
     </select>
+<!--    根据other查询未评价以及姓名查询为评价的信息-->
+    <select id="findByOther"  resultType="com.zut.entity.TFeedback">
+        select * from tfeedback
+            where other = '0' and teacher = #{teacher}
+    </select>
+
+    <select id="findInsevenDay" resultType="com.zut.entity.TFeedback">
+        SELECT * FROM tfeedback
+        where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(weektime) and teacher is not null
+    </select>
+
+    <select id="findInsevenDayS" resultType="com.zut.entity.TFeedback">
+        SELECT * FROM tfeedback
+        where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(weektime) and sclass is not null
+    </select>
+
+    <update id="updateTfeedback" parameterType="com.zut.entity.TFeedback">
+        update tfeedback
+        set tnumber = #{tnumber},tid = #{tid},weektime = #{weektime},
+            coursename =#{coursename},teachername=#{teachername},
+            sclass=#{sclass},liuyan=#{liuyan},other=1,sumscore=#{sumscore}
+        where other = 1 and teacher = #{teacher}
+    </update>
+
+<!--    这里是学生的评教信息-->
+    <select id="findStudentClassInfo" parameterType="INTEGER"  resultType="java.lang.String">
+        SELECT sclass
+        FROM student
+        where sid = #{sid}
+    </select>
+<!--    根据班级信息查询是否可以评价-->
+    <select id="findTFeedbackInfo" parameterType="java.lang.String" resultType="com.zut.entity.TFeedback">
+        SELECT * FROM tfeedback
+        where sclass = #{sclass} and other = '0'
+    </select>
+
+    <select id="selectByteacnameSumscore" resultType="INTEGER" parameterType="java.lang.String">
+        SELECT AVG(sumscore) from tfeedback
+        where teachername = #{teachername}
+    </select>
+    <select id="selectAverageScore" resultType="INTEGER">
+        SELECT AVG(sumscore) from tfeedback
+    </select>
 </mapper>

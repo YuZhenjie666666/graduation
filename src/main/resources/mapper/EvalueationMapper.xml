@@ -60,4 +60,18 @@
         insert into evaluation(<include refid="key"/>)
         values(<include refid="values"/>)
     </insert>
+
+<!--    查询所有的教师姓名-->
+    <select id="findAllTeachername" resultType="java.lang.String">
+        select DISTINCT tname from evaluation
+    </select>
+<!--    根据教师姓名查询所有的分数-->
+    <select id="findALlScoreByTeachername" resultType="INTEGER">
+        SELECT avg(score) from evaluation
+        where tname = #{tname}
+    </select>
+<!--    查询学校的所有人的平均分-->
+    <select id="allscoer" resultType="INTEGER">
+        select avg(score) from evaluation
+    </select>
 </mapper>

@@ -79,13 +79,16 @@ public class StudentController {
         String json = JSON.toJSONString(hashMap);
         return json;
     }
-
-    //这是测试使用
-    @GetMapping("/getTest")
-    public String findTest(){
-        studentMapper.findALlDepartment();
-        return null;
+    //updatepassword
+    @PostMapping("/updatepassword")
+    public String updatePassword(@RequestBody JSONObject jsonObject){
+        System.out.println(jsonObject);
+        Student student = jsonObject.toJavaObject(jsonObject, Student.class);
+        System.out.println(student);
+        studentMapper.updatestudentPassword(student);
+        return "success";
     }
+
     @PostMapping("/addStudent")
     public String addStudent(@RequestBody JSONObject jsonObject) {
         Student student = jsonObject.toJavaObject(jsonObject, Student.class);

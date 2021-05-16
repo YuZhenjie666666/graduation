@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zut.mapper.DailyweekMapper">
+    <!-- 日常信息评价内容  -->
+    <insert id="insertDailyweek" parameterType="com.zut.entity.Dailyweek">
+        insert into dailyweek
+        set tname = #{tname},coursename=#{coursename},index_name=#{index_name},good=#{good},soso=#{soso},
+        bad=#{bad},flag=#{flag}
+    </insert>
+
+    <update id="updateDaily" parameterType="com.zut.entity.Dailyweek">
+        update dailyweek
+        set good=#{good},soso=#{soso},bad=#{bad}
+        where tname = #{tname} and index_name=#{index_name}
+    </update>
+
+    <select id="selectDaily" parameterType="com.zut.entity.Dailyweek" resultType="com.zut.entity.Dailyweek">
+        select * from dailyweek
+        where tname = #{tname} and index_name=#{index_name}
+    </select>
+<!--    根据教师姓名查询所有的结果-->
+    <select id="selectAllByTeacher" resultType="com.zut.entity.Dailyweek">
+        select * from dailyweek
+        where tname = #{tname}
+    </select>
+    <select id="findAllnumber" parameterType="com.zut.entity.Dailyweek" resultType="com.zut.entity.Dailyweek">
+        select * from dailyweek
+        where tname=#{tname} and index_name = #{index_name}
+    </select>
+
+</mapper>

@@ -9,6 +9,11 @@
         where index_type = #{index_type}
     </select>
 
+    <select id="findAllName" resultType="java.lang.String" parameterType="INTEGER">
+        SELECT index_name FROM indexes
+        where index_type = #{index_type}
+    </select>
+
     <select id="findAllIndex" resultType="com.zut.entity.Indexes">
         SELECT * FROM indexes
     </select>

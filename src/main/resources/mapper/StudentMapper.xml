@@ -17,7 +17,7 @@
     </select>
 
     <update id="saveInfo" parameterType="com.zut.entity.Student">
-        update student
+            update student
             set sname = #{sname},ssex = #{ssex},sdepartment = #{sdepartment},sclass = #{sclass}
             where sid = #{sid}
     </update>
@@ -41,4 +41,10 @@
         delete from student
         where sid = #{sid}
     </delete>
+    <!--修改密码功能    -->
+    <update id="updatestudentPassword" parameterType="com.zut.entity.Student">
+        update student
+        set spassword = #{spassword}
+        where sid = #{sid}
+    </update>
 </mapper>

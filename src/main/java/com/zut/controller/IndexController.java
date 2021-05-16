@@ -32,6 +32,20 @@ public class IndexController {
         return json;
     }
 
+    @GetMapping("/findByTypename")
+    public String findAllByTypename(int index_type){
+        List<String> all = indexMapper.findAllName(index_type);
+        String flag = "error";
+        HashMap<String,Object> hash = new HashMap<>();
+        if(all != null){
+            flag = "success";
+        }
+        hash.put("flag",flag);
+        hash.put("indexesname",all);
+        String json = JSON.toJSONString(hash);
+        return json;
+    }
+
     @GetMapping("/findALl")
     public String findAll(){
         List<Indexes> all = indexMapper.findAllIndex();

@@ -64,4 +64,12 @@ public class NewsController {
         newsMapper.addNews(news);
         return "success";
     }
+
+//    修改新闻页面
+    @PostMapping("/updatenews")
+    public String updatenews(@RequestBody JSONObject jsonObject){
+        News news = jsonObject.toJavaObject(jsonObject, News.class);
+        newsMapper.updateNews(news);
+        return "success";
+    }
 }

@@ -8,4 +8,8 @@ public interface ManagerMapper {
    Manager managerlogin(Manager manager);
 
    Manager findById(int id);
+
+   void updatePass(Manager manager);
+
+   Manager findByName(String name);
 }

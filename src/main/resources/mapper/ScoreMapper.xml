@@ -16,4 +16,6 @@
         select * from score where time &gt; #{time}
     </select>
 
+
+
 </mapper>

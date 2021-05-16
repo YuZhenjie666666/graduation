@@ -7,4 +7,10 @@
         set beforequestion = #{beforequestion},answer = #{answer},time = #{time},snumber = #{snumber}
     </insert>
 
+    <select id="selectAnswer" parameterType="INTEGER" resultType="com.zut.entity.Matostu">
+        select *
+        from matostu
+        where snumber = #{snumber}
+    </select>
+
 </mapper>

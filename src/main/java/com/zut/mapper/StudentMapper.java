@@ -18,5 +18,6 @@ public interface StudentMapper {
     void updateStudent(Student student);
 //    删除学生信息
     void deleteStudent(int sid);
-
+    //修改学生密码
+    void updatestudentPassword(Student student);
 }

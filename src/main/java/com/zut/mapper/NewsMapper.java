@@ -10,4 +10,5 @@ public interface NewsMapper {
     News findById(int id);
     void deleteById(int id);
     void addNews(News news);
+    void updateNews(News news);
 }
